@@ -342,7 +342,19 @@ body.admin-open{background:#f1f8fa}
     const record = Object.fromEntries(data);
     record.createdAt = new Date().toISOString();
     const records = JSON.parse(localStorage.getItem('siterlambat_submissions') || '[]');
-    records.push(record);
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbynZY1PrW6FNTRmtU72jkue6uq6gBDDqiSKn8xTKDbiO0KYw26y_nnXYYRcqGV_qiOX/exec";
+
+fetch(SCRIPT_URL, {
+  method: "POST",
+  body: new URLSearchParams({
+    nama: data.get("name"),
+    kelas: data.get("class"),
+    tanggal: data.get("date"),
+    jam: data.get("time"),
+    alasan: data.get("reason")
+  })
+});
+   records.push(record);
     localStorage.setItem('siterlambat_submissions', JSON.stringify(records));
     localStorage.setItem('siterlambat_last', JSON.stringify(record));
 
