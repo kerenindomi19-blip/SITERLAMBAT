@@ -346,6 +346,7 @@ body.admin-open{background:#f1f8fa}
 
 fetch(SCRIPT_URL, {
   method: "POST",
+  mode: "no-cors"
   body: new URLSearchParams({
     nama: data.get("name"),
     kelas: data.get("class"),
