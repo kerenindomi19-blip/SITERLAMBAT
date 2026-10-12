@@ -353,7 +353,7 @@ fetch(SCRIPT_URL, {
     jam: data.get("time"),
     alasan: data.get("reason")
   })
-});
+}).catch(error => console.error("Gagal mengirim ke Google Sheets:", error));
    records.push(record);
     localStorage.setItem('siterlambat_submissions', JSON.stringify(records));
     localStorage.setItem('siterlambat_last', JSON.stringify(record));
